@@ -40,26 +40,36 @@ const App: React.FC<TodoListProps> = (props: TodoListProps) => {
   }
 
   return (
+    <div className='bg-gradient-to-r from-cyan-500 to-blue-500 h-screen'>
+    
+      <div className='flex text-6xl justify-center font-serif text-black font-extrabold p-4'>Todo List 📑</div>
+    
+    <body>
     <div>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <span style={{ textDecoration: todo.isCompleted ? 'line-through' : undefined }}>{todo.text}</span>
-            <button type="button" onClick={() => completeTodo(todo.id)}>
-              {todo.isCompleted ? 'Incomplete' : 'Complete'}
+            <span className='m-3 font-serif' style={{ textDecoration: todo.isCompleted ? 'line-through' : undefined }}>{todo.text}</span>
+            <button className=' bg-slate-400 text-white p-1 m-4 rounded-md' type="button" onClick={() => completeTodo(todo.id)}>
+              {todo.isCompleted ? 'Not Done 😔' : 'Done 😎'}
             </button>
-            <button type="button" onClick={() => removeTodo(todo.id)}>
-              X
+            <div >
+            <button className=' bg-blue-800 text-white p-1 m-4 rounded-md' type="button" onClick={() => removeTodo(todo.id)}>
+              Dismiss 🔚
             </button>
+            </div>
           </li>
         ))}
         <li>
-          <input type="text" value={todo} onChange={(e) => setTodo(e.target.value)} />
-          <button type="button" onClick={addTodo}>
+          <input className=' p-1 m-4' type="text" value={todo} onChange={(e) => setTodo(e.target.value)} />
+          <button className=' bg-blue-800 text-white p-1 px-3 m-3 rounded-md text-lg mr-5' type="button" onClick={addTodo}>
             Add Todo
           </button>
         </li>
       </ul>
+    </div>
+    </body>
+    
     </div>
   )
 }
